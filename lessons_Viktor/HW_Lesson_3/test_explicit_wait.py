@@ -40,9 +40,6 @@ def test_visible_after_with_explicit_waits(driver, wait):
     loader = driver.find_element(By.ID, 'loader').text
     assert loader == 'Загрузка...'
 
-    # time.sleep(5)
-
-    # finish_loading = wait.until(EC.visibility_of_element_located(By.CLASS_NAME, 'hidden'))
     wait.until(EC.visibility_of_element_located((By.ID, 'successMessage')))
     success_registration = driver.find_element(By.ID, 'successMessage').text
 
