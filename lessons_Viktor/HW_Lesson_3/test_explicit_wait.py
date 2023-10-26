@@ -20,7 +20,7 @@ def driver(chrome_options):
 
 @pytest.fixture
 def wait(driver):
-    wait = WebDriverWait(driver, timeout=10)
+    wait = WebDriverWait(driver, timeout=20)
     return wait
 
 def test_visible_after_with_explicit_waits(driver, wait):
@@ -40,10 +40,10 @@ def test_visible_after_with_explicit_waits(driver, wait):
     loader = driver.find_element(By.ID, 'loader').text
     assert loader == 'Загрузка...'
 
-    time.sleep(5)
+    # time.sleep(5)
 
     # finish_loading = wait.until(EC.visibility_of_element_located(By.CLASS_NAME, 'hidden'))
-    # success_registration = wait.until((EC.presence_of_element_located(By.ID, 'successMessage')))
+    wait.until(EC.visibility_of_element_located((By.ID, 'successMessage')))
     success_registration = driver.find_element(By.ID, 'successMessage').text
 
     assert success_registration == 'Вы успешно зарегистрированы!'

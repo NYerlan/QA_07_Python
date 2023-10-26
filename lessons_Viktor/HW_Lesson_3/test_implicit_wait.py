@@ -15,7 +15,7 @@ def chrome_options():
 @pytest.fixture
 def driver(chrome_options):
     driver = webdriver.Chrome(options=chrome_options)
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(20)
     yield driver
     driver.quit()
 
@@ -36,6 +36,6 @@ def test_visible_after_with_implicit_wait(driver):
     loader = driver.find_element(By.ID, 'loader')
     assert loader.is_displayed()
 
-    time.sleep(10)
-    success_registration = driver.find_element(By.ID, 'successMessage')
-    assert success_registration.is_displayed()
+    time.sleep(5)
+    success_registration = driver.find_element(By.ID, 'successMessage').text
+    assert success_registration == 'Вы успешно зарегистрированы!'

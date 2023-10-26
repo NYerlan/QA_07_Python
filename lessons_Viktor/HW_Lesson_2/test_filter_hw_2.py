@@ -2,10 +2,10 @@ from selenium.webdriver.common.by import By
 from locators import *
 
 
-def test_filter_az(driver, login):
-    driver.find_element(By.XPATH, FILTER_BUTTON).click()
-    driver.find_element(By.XPATH, FILTER_AZ_DROPDOWN).click()
-    items_name_list = driver.find_elements(By.XPATH, ITEMS_NAME_LIST)
+def test_filter_az(login):
+    login.find_element(By.XPATH, FILTER_BUTTON).click()
+    login.find_element(By.XPATH, FILTER_AZ_DROPDOWN).click()
+    items_name_list = login.find_elements(By.XPATH, ITEMS_NAME_LIST)
 
     items_name = [element.text for element in items_name_list]
     sorted_az_list = sorted(items_name)

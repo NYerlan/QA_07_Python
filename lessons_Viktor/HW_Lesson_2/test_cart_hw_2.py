@@ -45,6 +45,7 @@ def test_delete_from_cart_from_item_view(driver, login):
     item_name_before = driver.find_element(By.ID, 'item_0_title_link').text
     driver.find_element(By.ID, 'item_0_title_link').click()
 
+
     driver.find_element(By.XPATH, ADD_TO_CART_BUTTON).click()
 
     driver.find_element(By.XPATH, CART_LOGO).click()
@@ -55,8 +56,6 @@ def test_delete_from_cart_from_item_view(driver, login):
     driver.find_element(By.XPATH, '//div[contains(text(), "Sauce Labs Bike Light")]').click()
     driver.find_element(By.XPATH, REMOVE_FROM_CART_BUTTON).click()
     driver.find_element(By.XPATH, CART_LOGO).click()
-    element_before_item = driver.find_element(By.CSS_SELECTOR, '.cart_quantity_label')
-    element_after_item = driver.find_element(By.CSS_SELECTOR, '.cart_desc_label')
-    elements_between = driver.find_element(By.CSS_SELECTOR, '.cart_quantity_label ~ .cart_desc_label')
+    elements_between = driver.find_element(By.CSS_SELECTOR, '.cart_list ~ .cart_footer').text
 
-    # assert not elements_between
+    assert item_name_in_cart not in elements_between

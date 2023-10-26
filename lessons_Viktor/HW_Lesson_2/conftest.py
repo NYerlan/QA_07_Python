@@ -21,5 +21,5 @@ def login(driver):
     driver.find_element(By.XPATH, PASSWORD_FIELD).send_keys(PASSWORD)
     driver.find_element(By.XPATH, LOGIN_BUTTON).click()
     time.sleep(1)
-    yield
-    driver.close()
+    yield driver
+    # driver.close()
