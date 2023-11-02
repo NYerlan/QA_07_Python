@@ -20,7 +20,7 @@ def driver(chrome_options):
 
 @pytest.fixture
 def wait(driver):
-    wait = WebDriverWait(driver, timeout=20)
+    wait = WebDriverWait(driver, timeout=10)
     return wait
 
 def test_visible_after_with_explicit_waits(driver, wait):
